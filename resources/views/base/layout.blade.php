@@ -15,6 +15,12 @@
       </style>
   </head>
   <body class="antialiased">
+    <header>
+      <ul>
+        <li><a href="{{ route('home')}}">Home</a></li>
+        <li><a href="{{ route('dashboard')}}">Dashboard</a></li>
+      </ul>
+    </header>
     @yield('content')
   </body>
 </html>
