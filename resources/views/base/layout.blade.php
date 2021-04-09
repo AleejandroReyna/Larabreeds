@@ -17,8 +17,8 @@
   <body class="antialiased">
     <header>
       <ul>
-        <li><a href="{{ route('home')}}">Home</a></li>
-        <li><a href="{{ route('dashboard')}}">Dashboard</a></li>
+        <li class="{{ request()->routeIs('home') ? "active" : null }}"><a href="{{ route('home')}}">Home</a></li>
+        <li  class="{{ request()->routeIs('dashboard') ? "active" : null }}"><a href="{{ route('dashboard')}}">Dashboard</a></li>
       </ul>
     </header>
     @yield('content')
