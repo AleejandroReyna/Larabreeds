@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,4 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/dashboard/', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/dashboard/', [PagesController::class, 'dashboard'])->name('dashboard');
