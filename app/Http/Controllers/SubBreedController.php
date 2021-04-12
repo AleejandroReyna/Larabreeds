@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SubBreed;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class SubBreedController extends Controller
 {
@@ -46,7 +47,13 @@ class SubBreedController extends Controller
      */
     public function show(SubBreed $subBreed)
     {
-        //
+        $images = [];
+        $images_uri = "https://dog.ceo/api/breed/" . $subBreed->breed->name . "/" . $subBreed->category->name . "/images/random/6";
+        $request = Http::get($images_uri);
+        if ($request->ok()) {
+            $images = $request['message'];
+        }
+        return view('subbreeds/subbreed_detail', ["subBreed" => $subBreed, "images" => $images]);
     }
 
     /**

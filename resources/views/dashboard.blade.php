@@ -19,8 +19,8 @@
             <div class="card-body">
               <h3 class="card-title">{{$breed->name}}</h3>
               <ul>
-                @forelse ($breed->subBreeds as $sub)
-                  <li>{{$sub->category->name}}</li>
+                @forelse ($breed->subBreeds as $subBreed)
+                  <li><a href="{{route('sub_breeds.show', ['sub_breed' => $subBreed])}}">{{$subBreed->category->name}}</a></li>
                 @empty
                   <li>No available sub breeds...</li>
                 @endforelse

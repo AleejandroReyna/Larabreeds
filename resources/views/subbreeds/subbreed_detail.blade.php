@@ -1,29 +1,24 @@
 @extends('base/layout')
 
-@section('title', 'Breed: ' . $breed->name)
+@section('title', 'Sub Breed: '  . ' for ')
 
 @section('content')
-
   <div class="container-fluid">
+    
     <div class="row">
-      <div class="col"><h3 class="my-4">Breed Detail</h3></div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <div class="card mb-4">
-          <div class="card-header">
-            <h5 class="card-title">Info: </h5>
-          </div>
+      <div class="col-4 my-4">
+        <div class="card bg-light">
           <div class="card-body">
-            <strong>Name: </strong><span>{{$breed->name}}</span><br />
-            <ul>
-              @forelse ($breed->subBreeds as $sub)
-                <li><a href="{{route('sub_breeds.show', ['sub_breed' => $sub])}}">{{$sub->category->name}}</a></li>
-              @empty
-                <li>No available sub breeds...</li>
-              @endforelse
-            </ul>
+            <small>Breed</small><br>
+            <a href="{{route('breeds.show', ['breed' => $subBreed->breed])}}"><h3>{{$subBreed->breed->name}}</h3></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-4 my-4">
+        <div class="card bg-light">
+          <div class="card-body">
+            <small>Sub Breed</small><br>
+            <h3>{{$subBreed->category->name}}</h3>
           </div>
         </div>
       </div>
@@ -71,5 +66,4 @@
       </div>
     </div>
   </div>
-
 @endsection
