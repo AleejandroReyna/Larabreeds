@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Breed;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class BreedController extends Controller
 {
@@ -14,7 +15,6 @@ class BreedController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -46,7 +46,12 @@ class BreedController extends Controller
      */
     public function show(Breed $breed)
     {
-        //
+        $images = [];
+        $request = Http::get("https://dog.ceo/api/breed/" . $breed->name . "/images/random/6");
+        if ($request->ok()) {
+            $images = $request['message'];
+        }
+        return view('breeds/breed_detail', ["breed" => $breed, "images" => $images]);
     }
 
     /**
