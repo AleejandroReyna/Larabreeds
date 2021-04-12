@@ -18,12 +18,19 @@
             <img src="{{$breed->thumbnail}}" class="card-img-top" alt="{{$breed->name }} image">
             <div class="card-body">
               <h3 class="card-title">{{$breed->name}}</h3>
+              <ul>
+                @forelse ($breed->subBreeds as $sub)
+                  <li>{{$sub->category->name}}</li>
+                @empty
+                  <li>No available sub breeds...</li>
+                @endforelse
+              </ul>
               <a href="{{route('breeds.show', ['breed' => $breed])}}" class="btn btn-primary">View</a>
             </div>
           </article>
         </div>
       @empty
-        <div>No hay razas disponibles...</div>
+        <div>No available breeds...</div>
       @endforelse
     </div>
   </div>
