@@ -21,6 +21,10 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('dashboard', [PagesController::class, 'dashboard'])->name('dashboard');
+Route::get('login', [PagesController::class, 'login'])->name('login');
+Route::get('register', [PagesController::class, 'register'])->name('register');
+Route::post('authenticate', [PagesController::class, 'authenticate'])->name('authenticate');
+Route::post('store_user', [PagesController::class, 'store_user'])->name('store_user');
 Route::resource('breeds', BreedController::class)->only(['show']);
 # IMPORTANT!!! Use underscore in routes based in model name, resource does not work if use subbreeds or sub-breeds 
 Route::resource('sub_breeds', SubBreedController::class)->only(['show']);
