@@ -17,6 +17,7 @@
           </div>
           <div class="card-body">
             <strong>Name: </strong><span>{{$breed->name}}</span><br />
+            <strong>Sub Breeds: </strong>
             <ul>
               @forelse ($breed->subBreeds as $sub)
                 <li><a href="{{route('sub_breeds.show', ['sub_breed' => $sub])}}">{{$sub->category->name}}</a></li>
@@ -24,6 +25,16 @@
                 <li>No available sub breeds...</li>
               @endforelse
             </ul>
+            <strong>Actions: </strong>
+            @if(Auth::user()->checkBreed($breed))
+              <a class="btn btn-outline-secondary" href="{{route('breeds.remove_breed_to_user', ['breed' => $breed])}}">
+                Unmark as Favorite <i style="color: gold;" class="bi-star-fill"></i>
+              </a>
+            @else
+              <a class="btn btn-outline-secondary" href="{{route('breeds.add_breed_to_user', ['breed' => $breed])}}">
+                Mark as Favorite <i class="bi-star-fill"></i>
+              </a>
+            @endif
           </div>
         </div>
       </div>

@@ -14,7 +14,15 @@
       </style>
       <style>
           body {
-              font-family: 'Nunito', sans-serif;
+            font-family: 'Nunito', sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            min-height: 100vh;
+          }
+
+          .main-footer {
+            margin-top:  auto;
           }
       </style>
   </head>
@@ -52,6 +60,16 @@
       </nav>
     </header>
     @yield('content')
+    <footer class="bg-light text-center pt-3 main-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p>Made with <i class="bi bi-heart-fill"></i> by
+               <a href="https://github.com/AleejandroReyna" target="_blank">Alejandro Reyna</a></p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
