@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Breed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 
 class BreedController extends Controller
 {
@@ -86,5 +87,11 @@ class BreedController extends Controller
     public function destroy(Breed $breed)
     {
         //
+    }
+
+    public function addToUser(Breed $breed) 
+    {
+        Auth::user()->addBreed($breed);
+        return back();
     }
 }
