@@ -18,30 +18,26 @@ Clone the repo [here](https://github.com/AleejandroReyna/larabreeds).
 
 #### Step 03:
 
-Get PHP dependencies with `php composer.phar install`. 
+Set the enviroment variables with the access to DB copying the .env.example and rename with .env
 
 #### Step 04:
 
-Set the enviroment variables with the access to DB copying the .env.example and rename with .env
+If you're using Docker and you want to use sail, you can run the command `./vendor/bin/sail up` to create the containers and set up the development enviroment.
+
+If you're using only composer, you can use the command to get PHP dependencies with `php composer.phar install` and run `php artisan serve`
 
 #### Step 05:
 
-If you're using Docker and you want to use sail, you can run the command `./vendor/bin/sail up` to create the containers and set up the development enviroment.
-
-If you're using only composer, you can use the command `php artisan serve`
+Run the migrations with the command `php artisan migrate` (If you're using docker, you need to run this command into the running container with larabreeds service.)
 
 #### Step 06:
 
-Run the migrations with the command `php artisan migrate` (If you're using docker, you need to run this command into the running container with larabreeds service.)
+Run the seeds with the command `php artisan db:seed` (If you're using docker, you need to run this command into the running container with larabreeds service.)
 
 #### Step 07:
 
-Run the seeds with the command `php artisan db:seed` (If you're using docker, you need to run this command into the running container with larabreeds service.)
-
-#### Step 08:
-
 Give me a star on [Github ](https://github.com/AleejandroReyna/larabreeds).
 
-#### Step 09:
+#### Step 08:
 
 That's it all! Your server is working. ( :
