@@ -30,9 +30,21 @@
               <li class="nav-item">
                 <a href="{{ route('home')}}" class="nav-link {{ request()->routeIs('home') ? "active" : null }}">Home</a>
               </li>
-              <li class="nav-item">
-                <a href="{{ route('dashboard')}}" class="nav-link {{ request()->routeIs('dashboard') ? "active" : null }}">Dashboard</a>
-              </li>
+              @if( auth()->check() )
+                <li class="nav-item">
+                  <a href="{{ route('dashboard')}}" class="nav-link {{ request()->routeIs('dashboard') ? "active" : null }}">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('logout')}}" class="nav-link">Logout</a>
+                </li>
+              @else
+                <li class="nav-item">
+                  <a href="{{ route('login')}}" class="nav-link {{ request()->routeIs('login') ? "active" : null }}">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a href="{{ route('register')}}" class="nav-link {{ request()->routeIs('register') ? "active" : null }}">Register</a>
+                </li>
+              @endif
             </ul>
           </div>
         </div>

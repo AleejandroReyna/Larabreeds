@@ -23,6 +23,7 @@ Route::get('/', function () {
 Route::get('dashboard', [PagesController::class, 'dashboard'])->name('dashboard');
 Route::get('login', [PagesController::class, 'login'])->name('login');
 Route::get('register', [PagesController::class, 'register'])->name('register');
+Route::get('logout', [PagesController::class, 'logout'])->name('logout');
 Route::post('authenticate', [PagesController::class, 'authenticate'])->name('authenticate');
 Route::post('store_user', [PagesController::class, 'store_user'])->name('store_user');
 Route::resource('breeds', BreedController::class)->only(['show']);

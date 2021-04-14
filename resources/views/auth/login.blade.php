@@ -29,7 +29,9 @@
               <input type="password" name="password" class="form-control">
             </div>
             <div class="text-center">
+              <a href="{{ url()->previous() }}" class="btn btn-outline-secondary">Cancel</a>
               <button type="submit" class="btn btn-primary">login</button>
+              <p class="mt-5">Do you not have an account? <a href="{{route('register')}}">Register here</a>...</p>
             </div>
           </form>
         </div>

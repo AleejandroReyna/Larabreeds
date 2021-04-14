@@ -33,7 +33,9 @@
               <input type="password" name="password" class="form-control">
             </div>
             <div class="text-center">
+              <a href="{{ url()->previous() }}" class="btn btn-outline-secondary">Cancel</a>
               <button type="submit" class="btn btn-primary">Register</button>
+              <p class="mt-5">Do you have an account? <a href="{{route('login')}}">Login here</a>...</p>
             </div>
           </form>
         </div>
