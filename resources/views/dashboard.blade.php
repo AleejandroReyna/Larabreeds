@@ -26,6 +26,11 @@
                 @endforelse
               </ul>
               <a href="{{route('breeds.show', ['breed' => $breed])}}" class="btn btn-primary">View</a>
+              @if(Auth::user()->checkBreed($breed))
+                <span>fav</span>
+              @else
+                <a href="{{route('breeds.add_breed_to_user', ['breed' => $breed])}}">Add favorite</a>
+              @endif
             </div>
           </article>
         </div>
