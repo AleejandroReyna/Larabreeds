@@ -17,7 +17,14 @@
           <article class="card mb-4">
             <img src="{{$breed->thumbnail}}" class="card-img-top" alt="{{$breed->name }} image">
             <div class="card-body">
-              <h3 class="card-title">{{$breed->name}}</h3>
+              <div class="d-flex justify-content-between align-items-center">
+                <h3 class="card-title">{{$breed->name}}</h3>
+                @if(Auth::user()->checkBreed($breed))
+                  <a class="btn btn-outline-secondary" href="{{route('breeds.remove_breed_to_user', ['breed' => $breed])}}"><i style="color: gold;" class="bi-star-fill"></i></a>
+                @else
+                  <a class="btn btn-outline-secondary" href="{{route('breeds.add_breed_to_user', ['breed' => $breed])}}"><i class="bi-star-fill"></i></a>
+                @endif
+              </div>
               <ul>
                 @forelse ($breed->subBreeds as $subBreed)
                   <li><a href="{{route('sub_breeds.show', ['sub_breed' => $subBreed])}}">{{$subBreed->category->name}}</a></li>
@@ -26,11 +33,6 @@
                 @endforelse
               </ul>
               <a href="{{route('breeds.show', ['breed' => $breed])}}" class="btn btn-primary">View</a>
-              @if(Auth::user()->checkBreed($breed))
-                <a href="{{route('breeds.remove_breed_to_user', ['breed' => $breed])}}">Remove favorite</a>
-              @else
-                <a href="{{route('breeds.add_breed_to_user', ['breed' => $breed])}}">Add favorite</a>
-              @endif
             </div>
           </article>
         </div>
