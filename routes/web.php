@@ -27,6 +27,7 @@ Route::get('logout', [PagesController::class, 'logout'])->name('logout')->middle
 Route::post('authenticate', [PagesController::class, 'authenticate'])->name('authenticate');
 Route::post('store_user', [PagesController::class, 'store_user'])->name('store_user');
 Route::get('breeds/{breed}/add_to_user/', [BreedController::class, 'addToUser'])->name('breeds.add_breed_to_user')->middleware('auth');
+Route::get('breeds/{breed}/remove_to_user/', [BreedController::class, 'removeToUser'])->name('breeds.remove_breed_to_user')->middleware('auth');
 Route::resource('breeds', BreedController::class)->only(['show'])->middleware('auth');
 # IMPORTANT!!! Use underscore in routes based in model name, resource does not work if use subbreeds or sub-breeds 
 Route::resource('sub_breeds', SubBreedController::class)->only(['show'])->middleware('auth');

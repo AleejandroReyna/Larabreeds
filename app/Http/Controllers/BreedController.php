@@ -94,4 +94,10 @@ class BreedController extends Controller
         Auth::user()->addBreed($breed);
         return back();
     }
+
+    public function removeToUser(Breed $breed) 
+    {
+        Auth::user()->removeBreed($breed);
+        return back();
+    }
 }

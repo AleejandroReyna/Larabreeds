@@ -59,17 +59,26 @@ class User extends Authenticatable
             ["user_id", "=", $this->id],
             ["breed_id", "=",$breed->id]]
         );
-        return $query->count();
+        return $query->count() ? $query : false;
     }
 
     public function addBreed(Breed $breed) {
         if($this->checkBreed($breed)) {
-            return null;
+            return false;
         }
         UserFavoriteBreed::create([
             'user_id' => $this->id,
             'breed_id' => $breed->id
         ]);
+        return true;
+    }
+
+    public function removeBreed(Breed $breed) {
+        if(!$this->checkBreed($breed)) {
+            return false;
+        }
+        $favorite_item = $this->checkBreed($breed)->first();
+        $favorite_item->delete();
         return true;
     }
 }
