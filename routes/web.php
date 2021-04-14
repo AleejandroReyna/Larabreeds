@@ -20,12 +20,12 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('dashboard', [PagesController::class, 'dashboard'])->name('dashboard');
+Route::get('dashboard', [PagesController::class, 'dashboard'])->name('dashboard')->middleware('auth');
 Route::get('login', [PagesController::class, 'login'])->name('login');
 Route::get('register', [PagesController::class, 'register'])->name('register');
-Route::get('logout', [PagesController::class, 'logout'])->name('logout');
+Route::get('logout', [PagesController::class, 'logout'])->name('logout')->middleware('auth');
 Route::post('authenticate', [PagesController::class, 'authenticate'])->name('authenticate');
 Route::post('store_user', [PagesController::class, 'store_user'])->name('store_user');
-Route::resource('breeds', BreedController::class)->only(['show']);
+Route::resource('breeds', BreedController::class)->only(['show'])->middleware('auth');
 # IMPORTANT!!! Use underscore in routes based in model name, resource does not work if use subbreeds or sub-breeds 
-Route::resource('sub_breeds', SubBreedController::class)->only(['show']);
+Route::resource('sub_breeds', SubBreedController::class)->only(['show'])->middleware('auth');
