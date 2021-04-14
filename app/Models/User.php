@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Breed;
+use App\Models\UserFavoriteBreed;
 
 class User extends Authenticatable
 {
@@ -45,5 +47,29 @@ class User extends Authenticatable
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = Hash::make($password);
+    }
+
+    public function breeds() 
+    {
+        return $this->hasManyThrough(Breed::class, UserFavoriteBreed::class);
+    }
+
+    public function checkBreed(Breed $breed) {
+        $query = UserFavoriteBreed::where([
+            ["user_id", "=", $this->id],
+            ["breed_id", "=",$breed->id]]
+        );
+        return $query->count();
+    }
+
+    public function addBreed(Breed $breed) {
+        if($this->checkBreed($breed)) {
+            return null;
+        }
+        UserFavoriteBreed::create([
+            'user_id' => $this->id,
+            'breed_id' => $breed->id
+        ]);
+        return true;
     }
 }
